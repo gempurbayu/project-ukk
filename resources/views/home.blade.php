@@ -15,29 +15,29 @@
                     @endif
 
                     <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Level</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php $no=1; ?>
-                @foreach($users as $user)
-                    <tr>
-                        <td>{{$no++}}</td>
-                        <td>{{$user->name}}</td>
-                        <td>{{$user->email}}</td>
-                        <td>{{$user->level}}</td>
-                    </tr>
-                    @endforeach
-            </tbody>
-        </table>
-        {!! $users->links() !!}
-    </div>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Level</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $no=1; ?>
+                                @foreach($users as $user)
+                                    <tr>
+                                        <td>{{$no++}}</td>
+                                        <td>{{$user->name}}</td>
+                                        <td>{{$user->email}}</td>
+                                        <td>{{$user->level}}</td>
+                                    </tr>
+                                    @endforeach
+                            </tbody>
+                        </table>
+                        {!! $users->links() !!}
+                    </div>
 
                 </div>
             </div>
