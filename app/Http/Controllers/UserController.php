@@ -29,7 +29,7 @@ class UserController extends Controller
         //page heading
         $title = 'Latest User';
         //return to our view
-        return view('home')->withUsers($users)->withTitle($title);
+        return view('admin.admin_template')->withUsers($users)->withTitle($title);
 
     }
 
@@ -62,7 +62,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $users = DB::table('users')->count();
     }
 
     /**
@@ -96,6 +96,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $users = User::find($id);
+        $users->delete();
+        return redirect('admin.admin_template')->with('success','user has been  deleted');
     }
 }
