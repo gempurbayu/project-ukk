@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\customer;
 
-class UserController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -16,7 +16,6 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -24,13 +23,10 @@ class UserController extends Controller
      */
     public function index()
     {
-                //fetch 5 posts
-        $users = User::latest()->paginate(5);
-        //page heading
-        $title = 'Latest User';
-        //return to our view
-        return view('auth.show', compact('users','id'))->withUsers($users)->withTitle($title);
-
+        $customers = Customer::latest()->paginate(5);
+        return view('customers.show',compact('customers'))
+            ->with('i', (request()->input('page', 1) - 1) * 5)->with([
+     'customer' => $customers]);
     }
 
     /**
@@ -40,7 +36,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('customers.create');
     }
 
     /**
@@ -51,8 +47,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+         request()->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'gender' => 'required',
+        ]);
+        Article::create($request->all());
+        return redirect()->route('customers.index')
+                        ->with('success','Customers created successfully');    }
 
     /**
      * Display the specified resource.
@@ -62,7 +65,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-       
+        $customer = Customers::find($id);
+        return view('customers.show',compact('customer'));
     }
 
     /**
@@ -71,9 +75,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) {
-        $users = User::find($id);
-        return view('auth.edit');
+    public function edit($id)
+    {
+        //
     }
 
     /**
@@ -85,7 +89,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        //
     }
 
     /**
@@ -96,8 +100,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $users = User::find($id);
-        $users->delete();
-        return redirect('admin.admin_template')->with('success','user has been  deleted');
+         Customers::find($id)->delete();
+        return redirect()->route('customers.index')
+                        ->with('success','customer deleted successfully');
     }
 }
