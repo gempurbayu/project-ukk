@@ -53,7 +53,7 @@ class CustomerController extends Controller
             'phone' => 'required',
             'gender' => 'required',
         ]);
-        Article::create($request->all());
+        Customer::create($request->all());
         return redirect()->route('customers.index')
                         ->with('success','Customers created successfully');    }
 
