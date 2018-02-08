@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\customer;
+use App\User;
 
 class CustomerController extends Controller
 {
@@ -24,7 +25,8 @@ class CustomerController extends Controller
     public function index()
     {
         $customers = Customer::latest()->paginate(5);
-        return view('customers.show',compact('customers'))
+        $users = User::Latest();
+        return view('customers.show',compact('customers','users','id'))
             ->with('i', (request()->input('page', 1) - 1) * 5)->with([
      'customer' => $customers]);
     }
@@ -36,7 +38,10 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('customers.create');
+        $users = User::Latest();
+        $customers = Customer::Latest();
+        return view('customers.create',compact('customers','users','id'))->with([
+     'customer' => $customers]);
     }
 
     /**
@@ -65,7 +70,7 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        $customer = Customers::find($id);
+        $customer = Customer::find($id);
         return view('customers.show',compact('customer'));
     }
 
@@ -77,19 +82,29 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $customers = Customer::find($id);
+        $users = User::Latest();
+        return view('customers.edit',compact('customers','users','id'))->with([
+     'customer' => $customers]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+       request()->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'gender' => 'required',
+        ]);
+        Customer::find($id)->update($request->all());
+        return redirect()->route('customers.index')
+                        ->with('success','Customers created successfully');
     }
 
     /**
@@ -100,7 +115,7 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-         Customers::find($id)->delete();
+         Customer::find($id)->delete();
         return redirect()->route('customers.index')
                         ->with('success','customer deleted successfully');
     }

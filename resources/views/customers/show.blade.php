@@ -4,7 +4,10 @@
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">User Data</h3>
+              <div class="col-md-10">
+              <h3 class="box-title">Customer Data</h3>
+              </div>
+              <div class="col-md-2"><a class="btn btn-primary" href="{{ route('customers.create') }}">Create Customer</a></div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

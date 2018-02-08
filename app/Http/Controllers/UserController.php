@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\customer;
 
 class UserController extends Controller
 {
@@ -25,11 +26,13 @@ class UserController extends Controller
     public function index()
     {
                 //fetch 5 posts
+        $customers = Customer::latest();
         $users = User::latest()->paginate(5);
         //page heading
         $title = 'Latest User';
         //return to our view
-        return view('auth.show', compact('users','id'))->withUsers($users)->withTitle($title);
+        return view('auth.show', compact('users','id','customers'))->withUsers($users)->withTitle($title)->with([
+     'customer' => $customers]);
 
     }
 
