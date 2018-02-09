@@ -20,7 +20,7 @@ class CreateRutesTable extends Migration
             $table->string('rute_to');
             $table->string('price');
             $table->integer('transportation_id')->unsigned();
-
+            $table->timestamps();
             $table->foreign('transportation_id')
                 ->references('id')->on('transportations')
                 ->onDelete('cascade');
