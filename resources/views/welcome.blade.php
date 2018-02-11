@@ -74,11 +74,11 @@
             <div class="container">
                 <div class="nav-header">
                     <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-                    <h1 id="fh5co-logo"><a href="index.html"><i class="icon-airplane"></i>Flight Travel</a></h1>
+                    <h1 id="fh5co-logo"><a href="{{url('/')}}"><i class="icon-airplane"></i>Flight Travel</a></h1>
                     <!-- START #fh5co-menu-wrap -->
                     <nav id="fh5co-menu-wrap" role="navigation">
                         <ul class="sf-menu" id="fh5co-primary-menu">
-                            <li class="active"><a href="index.html">Home</a></li>
+                            <li class="active"><a href="{{url('/')}}">Home</a></li>
                             <li><a href="#">Flights</a></li>
                             @if (Route::has('login'))
                                 @auth
@@ -133,70 +133,75 @@
 
                                    <!-- Tab panes -->
                                     <div class="tab-content">
-                                     <div role="tabpanel" class="tab-pane active" id="flights">
-                                        <div class="row">
-                                            <div class="col-xxs-12 col-xs-6 mt">
-                                                <section>
-                                                    <label for="from">From:</label>
-                                                    <select class="cs-select cs-skin-border" >
-                                                                <option value="" disabled selected>Rute to</option>
-                                                                <option value="Denpasar">Denpasar</option>
+                                    <form action="{{ route('book.carimaskapai') }}" method="get">
+
+
+                                            <div role="tabpanel" class="tab-pane active" id="flights">
+                                                    <div class="col-xxs-6 col-xs-6 mt">
+                                                        <div class="input-field">
+                                                            <label for="from">From:</label>
+                                                            <select name="rute_from" id="" class="cs-select cs-skin-border">
+                                                                <option value="" disabled selected>----</option>
+                                                                <option value="Denpasar">   Denpasar</option>
                                                                 <option value="Jakarta">Jakarta</option>
                                                                 <option value="Bandung">Bandung</option>
                                                                 <option value="Jayapura">Jayapura</option>
                                                                 <option value="Pontianak">Pontianak</option>
                                                                 <option value="Palembang">Palembang</option>
                                                                 <option value="Makasar">Makasar</option>
-                                                   </select>
-                                                </section>
-                                            </div>
-                                            <div class="col-xxs-12 col-xs-6 mt">
-                                                <section>
-                                                    <label for="from">To:</label>
-                                                    <select class="cs-select cs-skin-border" >
-                                                                <option value="" disabled selected>Rute to</option>
-                                                                <option value="Denpasar">Denpasar</option>
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xxs-6 col-xs-6 mt">
+                                                        <div class="input-field">
+                                                            <label for="from">To:</label>
+                                                            <select name="rute_to" id="" class="cs-select cs-skin-border">
+                                                                <option value="" disabled selected>----</option>
+                                                                <option value="Denpasar">   Denpasar</option>
                                                                 <option value="Jakarta">Jakarta</option>
                                                                 <option value="Bandung">Bandung</option>
                                                                 <option value="Jayapura">Jayapura</option>
                                                                 <option value="Pontianak">Pontianak</option>
                                                                 <option value="Palembang">Palembang</option>
                                                                 <option value="Makasar">Makasar</option>
-                                                   </select>
-                                                </section>
-                                            </div>
-                                            <div class="col-xxs-12 col-xs-12 mt alternate">
-                                                <div class="input-field">
-                                                    <label for="date-start">Check In:</label>
-                                                    <input type="text" class="form-control" id="date-start" placeholder="mm/dd/yyyy"/>
+
+                                                            </select>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xxs-12 col-xs-12 mt alternate">
+                                                        <div class="input-field">
+                                                            <label for="date-start">Depart:</label>
+                                                            <input type="text" class="form-control" id="date-start" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" name="depart_at" required/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xxs-12 col-xs-6 mt">
+                                                        <section>
+                                                            <label for="class">Adult:</label>
+                                                            <select name="seat" class="cs-select cs-skin-border">
+                                                                <option value="1" disabled selected>1</option>
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                            </select>
+                                                        </section>
+                                                    </div>
+                                                <div class="col-xs-12">
+                                                    <input type="submit" class="btn btn-primary btn-block mt" value="Search Flight">
                                                 </div>
                                             </div>
-                                            <div class="col-xxs-12 col-xs-12 mt">
-                                                <section>
-                                                    <label for="class">Adult:</label>
-                                                    <select class="cs-select cs-skin-border">
-                                                        <option value="" disabled selected>1</option>
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                    </select>
-                                                </section>
-                                            </div>
-                                            <div class="col-xs-12">
-                                                <input type="submit" class="btn btn-primary btn-block" value="Search Flight">
-                                            </div>
-                                        </div>
-                                     </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                             <div class="desc2 animate-box">
                                 <div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1">
-                                    <p>HandCrafted by <a href="http://frehtml5.co/" target="_blank" class="fh5co-site-name">FreeHTML5.co</a></p>
-                                    <h2>Exclusive Limited Time Offer</h2>
-                                    <h3>Fly to Hong Kong via Los Angeles, USA</h3>
-                                    <span class="price">$599</span>
+                                    <p>HandCrafted by <a href="#" target="_blank" class="fh5co-site-name">Gempur Bayu</a></p>
+                                    <h2>Tempat Booking Tiket Pesawat Ter-Amatir</h2>
+                                    <h3>Terbang kemanapun belum bisa</h3>
+                                    <span class="price">Maaf ya buat ukk</span>
                                     <!-- <p><a class="btn btn-primary btn-lg" href="#">Get Started</a></p> -->
                                 </div>
                             </div>

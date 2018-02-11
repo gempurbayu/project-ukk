@@ -12,6 +12,26 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/animate.css')}}">
+<!-- Icomoon Icon Fonts-->
+<link rel="stylesheet" href="{{ asset('css/icomoon.css')}}">
+<!-- Bootstrap  -->
+<link rel="stylesheet" href="{{ asset('css/bootstrap.css')}}">
+<!-- Superfish -->
+<link rel="stylesheet" href="{{ asset('css/superfish.css')}}">
+<!-- Magnific Popup -->
+<link rel="stylesheet" href="{{ asset('css/magnific-popup.css')}}">
+<!-- Date Picker -->
+<link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css')}}">
+<!-- CS Select -->
+<link rel="stylesheet" href="{{ asset('css/cs-select.css')}}">
+<link rel="stylesheet" href="{{ asset('css/cs-skin-border.css')}}">
+
+<link rel="stylesheet" href="{{ asset('css/style.css')}}">
+
+
+<!-- Modernizr JS -->
+<script src="{{ asset('js/modernizr-2.6.2.min.js')}}"></script>
 </head>
 <body>
     <div id="app">

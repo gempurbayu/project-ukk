@@ -11,6 +11,8 @@ use Auth;
 
 class RuteController extends Controller
 {
+
+	
 	    public function __construct()
     {
         $this->middleware('auth');
@@ -20,10 +22,15 @@ class RuteController extends Controller
 
     public function index()
     {
-    	return view('admin');
+    	$rutes = Rute::latest()->paginate(5);
+        $users = User::Latest();
+        $customers = Customer::Latest();
+        return view('admin.show_rute',compact('transportation','customers','users','id'))
+            ->with('i', (request()->input('page', 1) - 1) * 5)->with([
+     'rute' => $rutes])->with(['customer' => $customers]);
     }
 
-     public function rutebikin()
+     public function create()
     {
         $rutes = Rute::Latest();
         $users = User::Latest();
@@ -33,7 +40,7 @@ class RuteController extends Controller
      'rute' => $rutes])->with([
      'customer' => $customers]);;
     }
-    public function rutesetor()
+    public function store()
     {
     	Rute::create([
     		'depart_at' => request('depart_at'),
@@ -43,5 +50,11 @@ class RuteController extends Controller
     		'transportation_id' => request('transportation_id'),  
     	]);
     	return redirect()->route('customers.index');
+    }
+
+    public function show($id)
+    {
+        $rute = Rute::find($id);
+        return view('admin.show_data',compact('rute'));
     }
 }
