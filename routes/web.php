@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function(){
 Route::get('/customer','CustomerController@create')->name('customer.create');
 Route::post('/customer','CustomerController@store')->name('customer.store');
 Route::get('/book/maskapai','BookController@carimaskapai')->name('book.carimaskapai');
+Route::get('/book/{rute}','BookController@detail')->name('book.detail');
 });
 
 Route::middleware('admin')->group(function(){

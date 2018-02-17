@@ -9,7 +9,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-				<form action="{{ route('rute.rutesetor')}}" method="post" class="form-horizontal">
+				<form action="{{ route('rutes.store')}}" method="post" class="form-horizontal">
 						{{ csrf_field() }}
 
 						<div class="col-xs-12 col-sm-12 col-md-12">

@@ -49,7 +49,7 @@ class RuteController extends Controller
     		'price' => request('price'),
     		'transportation_id' => request('transportation_id'),  
     	]);
-    	return redirect()->route('customers.index');
+    	return redirect()->url('/admin/customers');
     }
 
     public function show($id)
