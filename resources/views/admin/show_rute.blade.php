@@ -35,6 +35,9 @@
                     {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
 
                     {!! Form::close() !!}
+                     <a href="{{route('rute.edit',$rutes)}}" style="display: inline;">
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                      </a>
                   </td>
                 </tr>
                 @endforeach

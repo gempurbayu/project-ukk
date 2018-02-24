@@ -40,18 +40,40 @@ class RuteController extends Controller
      'rute' => $rutes])->with([
      'customer' => $customers]);;
     }
-    public function store()
+    public function store(Request $request)
     {
-    	Rute::create([
-    		'depart_at' => request('depart_at'),
-    		'rute_from' => request('rute_from'),
-    		'rute_to' => request('rute_to'),
-    		'price' => request('price'),
-    		'transportation_id' => request('transportation_id'),  
-    	]);
-    	return redirect()->url('/admin/customers');
+    	request()->validate([
+            'depart_at' => 'required',
+            'rute_from' => 'required',
+            'rute_to' => 'required',
+            'price' => 'required',
+        ]);
+        Rute::create($request->all());
+        return redirect()->route('rutes.index')
+                        ->with('success','Customers created successfully');
     }
-
+    public function edit($id)
+    {
+        $users = User::Latest();
+        $rutes = Rute::Latest();
+        $customers = Customer::Latest();
+        $transportation = Transportation::all();
+        $rutes = Rute::find($id);
+        return view('admin.edit_rute',compact('transportation','rutes','users','id'))->with([
+     'rutes' => $rutes])->with(['customer' => $customers]);
+    }
+    public function update(Request $request, $id)
+    {
+       request()->validate([
+            'depart_at' => 'required',
+            'rute_from' => 'required',
+            'rute_to' => 'required',
+            'price' => 'required',
+        ]);
+        Rute::find($id)->update($request->all());
+        return redirect()->route('rutes.index')
+                        ->with('success','rute update successfully');
+    }
     public function show($id)
     {
         $rute = Rute::find($id);

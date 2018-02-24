@@ -6,7 +6,9 @@
 		<div class="container" style="padding-top: 80px;">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2" style="background-color: #fff;z-index: 2;padding-top: 20px;opacity: 0.8; border-radius: 6px;">
-
+				<h1>
+				Data Reservasi
+				</h1>
 
 					<div class="tab-content" >
 					<table>
@@ -43,7 +45,7 @@
 						*) Jika data belum benar dan belum sesuai maka klik tombol <b>KEMBALI</b><br>
 						</p>
 						<a href="/" class="btn btn-primary" style="font-size: 13px;">KEMBALI</a>
-						<a href="#" class="btn btn-primary" style="font-size: 13px;">LANJUTKAN</a>
+						<a href="{{route('book.createcus',  $rute)}}?seat={{$_GET['seat']}}" class="btn btn-primary" style="font-size: 13px;">LANJUTKAN</a>
 
 					</div>
 				</div>

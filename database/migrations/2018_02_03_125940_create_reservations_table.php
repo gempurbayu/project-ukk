@@ -13,29 +13,26 @@ class CreateReservationsTable extends Migration
      */
     public function up()
     {
-         Schema::create('reservations', function (Blueprint $table) {
+        Schema::create('reservations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('reservation_code');
-            $table->string('reservation_at');
-            $table->string('reservation_date');
+            $table->timestamp('reservation_date');
             $table->string('seat_code');
             $table->string('depart_at');
             $table->string('price');
-            $table->integer('customer_id')->unsigned();
-            $table->integer('rute_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->timestamps();
+            $table->integer('customer_id')->unsigned();
+            
+            
 
-            $table->foreign('customer_id')
-                ->references('id')->on('customers')
-                ->onDelete('cascade');
             $table->foreign('user_id')
                 ->references('id')->on('users')
                 ->onDelete('cascade');
-            $table->foreign('rute_id')
-                ->references('id')->on('rutes')
+            $table->foreign('customer_id')
+                ->references('id')->on('customers')
                 ->onDelete('cascade');
-            });
+            
+        });
     }
 
     /**

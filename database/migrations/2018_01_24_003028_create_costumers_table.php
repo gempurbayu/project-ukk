@@ -15,13 +15,19 @@
         {
             Schema::create('customers', function (Blueprint $table) {
                 $table->increments('id');
-                
+                $table->integer('rute_id')->unsigned();
                 $table->string('name');
                 $table->string('address');
                 $table->string('phone');
                 $table->enum('gender', ['Pria','Wanita']);
                 $table->timestamps();
 
+                $table->foreign('rute_id')
+                ->references('id')->on('rutes')
+                ->onDelete('cascade');
+
+
+                     
             });
         }
 
@@ -32,6 +38,6 @@
          */
         public function down()
         {
-            Schema::dropIfExists('customers');
+            Schema::dropIfExists('costumers');
         }
     }

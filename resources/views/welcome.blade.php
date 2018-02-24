@@ -11,7 +11,6 @@
 
   <!-- 
     //////////////////////////////////////////////////////
-
     FREE HTML5 TEMPLATE 
     DESIGNED & DEVELOPED by FREEHTML5.CO
         
@@ -19,7 +18,6 @@
     Email:          info@freehtml5.co
     Twitter:        http://twitter.com/fh5co
     Facebook:       https://www.facebook.com/fh5co
-
     //////////////////////////////////////////////////////
      -->
 
@@ -180,7 +178,7 @@
                                                         <section>
                                                             <label for="class">Adult:</label>
                                                             <select name="seat" class="cs-select cs-skin-border">
-                                                                <option value="1" disabled selected>1</option>
+                                                             
                                                                 <option value="1">1</option>
                                                                 <option value="2">2</option>
                                                                 <option value="3">3</option>
@@ -641,5 +639,5 @@
     <script src="{{ asset('js/selectFx.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/superfish.js') }}"></script>
-    </body>
+</body>
 </html>
