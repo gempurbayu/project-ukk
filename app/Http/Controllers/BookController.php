@@ -30,7 +30,7 @@ class BookController extends Controller
                 'name' => $request->name[$i],
                 'address' =>$request->address[$i],
                 'phone' => $request->phone[$i],
-                'gander' => $request->gander[$i],
+                'gender' => $request->gender[$i],
                 'rute_id' => $id,
                 'kursi' => $seat,
                 'token' => $request->token,

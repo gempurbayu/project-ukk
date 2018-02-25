@@ -8,11 +8,13 @@
 				<div class="col-md-8 col-md-offset-2" style="background-color: #fff;z-index: 2;padding-top: 20px;opacity: 0.8; border-radius: 6px;">
 
 					<div class="tab-content">
-				<h1>
-				Data Reservasi
-				</h1>
+				<div class="row">
+				<?php $no=1; ?>
+				@foreach ($customer as $customers)
+					<div class="col-md-6">
+					<h3>Data Penumpang {{$no++}}</h3>
 					<table>
-					<b>@foreach ($customer as $customers)
+					<b>
 						<tr>
 						<td>Nama</td>
 						<td>   : {{$customers->name}}</td>
@@ -31,7 +33,7 @@
 						</tr>
 						<tr>
 						<td>Alamat</td> 
-						<td>   : {{$customers->address}} ]</td>
+						<td>   : {{$customers->address}}</td>
 						</tr>
 						<tr>
 						<td>Nomor Hp</td> 
@@ -41,11 +43,12 @@
 						<td>Jenis Kelamin</td>
 						<td>   : {{$customers->gender}}</td>
 						</tr>
-						@endforeach
+						
 					</b>
 					</table>
-						
-						
+					</div>
+						@endforeach
+					</div>
 						<br>	
 						<form action="{{ url()->current()}}/payment?token={{$_GET['token']}}" method="post">
 							
